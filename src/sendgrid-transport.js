@@ -35,6 +35,10 @@ SendGridTransport.prototype.send = function(mail, callback) {
     }
   }
 
+  if(addresses['reply-to']) {
+    email.replyto = addresses['reply-to'];
+  }
+
   // populate to and toname arrays
   email.to = to.map(function(rcpt) {
     return rcpt.address || '';
